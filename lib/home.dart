@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'package:scouting_dashboard/widgets/animations/animateInText.dart';
 
@@ -20,11 +21,12 @@ class Home extends StatelessWidget {
         ),
         title: AnimateInText(
           duration: Duration(seconds: 1),
-          text: "📊 Scouting Dashboard",
+          text:
+              "📊 Scouting Dashboard, ${DateFormat.yMMMd().format(DateTime.now())}",
           verticalOffset: 50,
           horizontalOffset: 50,
-          mainAxis: MainAxisAlignment.center,
-          crossAxis: CrossAxisAlignment.center,
+          mainAxis: MainAxisAlignment.start,
+          crossAxis: CrossAxisAlignment.start,
         ),
         backgroundColor: Colors.black,
       ),
