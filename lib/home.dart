@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:scouting_dashboard/widgets/animations/animateInText.dart';
 
@@ -11,9 +11,15 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
-          padding: const EdgeInsets.all(7.0),
+          padding: const EdgeInsets.only(
+            bottom: 7.0,
+            top: 7.0,
+            left: 10.0,
+            right: 10.0,
+          ),
           child: FloatingActionButton(
-            onPressed: null,
+            hoverColor: Colors.blue,
+            onPressed: () => print(""),
             child: Icon(
               Icons.settings,
             ),
@@ -21,14 +27,31 @@ class Home extends StatelessWidget {
         ),
         title: AnimateInText(
           duration: Duration(seconds: 1),
-          text:
-              "📊 Scouting Dashboard, ${DateFormat.yMMMd().format(DateTime.now())}",
+          text: "📊 Scouting Dashboard",
           verticalOffset: 50,
           horizontalOffset: 50,
           mainAxis: MainAxisAlignment.start,
           crossAxis: CrossAxisAlignment.start,
         ),
         backgroundColor: Colors.black,
+      ),
+      body: GridView.count(
+        crossAxisCount: 4,
+        children: List.generate(
+          100,
+          (int index) {
+            return AnimationConfiguration.staggeredGrid(
+              position: index,
+              duration: const Duration(seconds: 1),
+              columnCount: 4,
+              child: ScaleAnimation(
+                child: FadeInAnimation(
+                  child: Text("Hello"),
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
