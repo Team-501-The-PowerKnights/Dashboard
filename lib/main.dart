@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:scouting_dashboard/home.dart';
 
-void main() => runApp(ScoutingDashboard());
+void main() => ScoutingDashboard();
 
 class ScoutingDashboard extends StatelessWidget {
   @override

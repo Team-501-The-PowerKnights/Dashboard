@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter/services.dart';
 
 import 'package:scouting_dashboard/widgets/animations/animateInText.dart';
 
@@ -11,6 +11,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+    ]);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,28 +46,24 @@ class _HomeState extends State<Home> {
           horizontalOffset: 50,
           mainAxis: MainAxisAlignment.start,
           crossAxis: CrossAxisAlignment.start,
+          textStyle: TextStyle(
+            color: Colors.white,
+          ),
         ),
         backgroundColor: Colors.black,
-        actions: <Widget>[FloatingActionButton(onPressed: () {})],
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: FloatingActionButton(
+              splashColor: Colors.green,
+              hoverColor: Colors.blue,
+              onPressed: () {},
+              child: Icon(Icons.refresh),
+            ),
+          ),
+        ],
       ),
-      body: GridView.count(
-        crossAxisCount: 4,
-        children: List.generate(
-          100,
-          (int index) {
-            return AnimationConfiguration.staggeredGrid(
-              position: index,
-              duration: const Duration(seconds: 1),
-              columnCount: 4,
-              child: ScaleAnimation(
-                child: FadeInAnimation(
-                  child: Text("Hello"),
-                ),
-              ),
-            );
-          },
-        ),
-      ),
+      body: GridView.count(crossAxisCount: 4, children: <Widget>[]),
     );
   }
 }
