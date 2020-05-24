@@ -1,6 +1,8 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// Project imports:
 import 'package:scouting_dashboard/widgets/animations/animateInText.dart';
 
 class Home extends StatefulWidget {

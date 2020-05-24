@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class AnimateInText extends StatelessWidget {
